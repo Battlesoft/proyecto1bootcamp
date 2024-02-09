@@ -18,6 +18,41 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
+// ----------------
+//     MY CODE
+// ----------------
+
+// Maneja solicitud en ruta "api/:date?"
+app.get("api/:date?", function(req,res){
+  const {date} = req.params;
+
+  // si no hay fecha devuelve la actual
+  if (!date) {
+    const currentDate = new Date();
+    return res.json({ unix: currentDate.getTime(), utc: currentDate.toUTCString});
+  }
+
+  //  Si no es valido la fecha devolverá el error "Invalid Date"
+
+  if (isNaN(parsedDate.getTime())) {
+    return res.json({error: "Invalid Date"});
+  }
+
+  // Si es valido devuelve el UTC y el unix timestap
+  res.json({ unix: parsedDate.getTime(), utc: parsedDate.toUTCString()});
+});
+
+
+
+
+
+
+// -----------------------------------------------------
+
+
+app.get("/api/date", function (req, res) {
+  res.sendFile(__dirname + '/views/index.html');
+});
 
 // your first API endpoint... 
 app.get("/api/hello", function (req, res) {
