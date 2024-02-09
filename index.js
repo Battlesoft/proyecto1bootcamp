@@ -32,8 +32,9 @@ app.get("api/:date?", function(req,res){
     return res.json({ unix: currentDate.getTime(), utc: currentDate.toUTCString});
   }
 
-  //  Si no es valido la fecha devolverá el error "Invalid Date"
+  const parsedDate = new Date(date);
 
+  //  Si no es valido la fecha devolverá el error "Invalid Date"
   if (isNaN(parsedDate.getTime())) {
     return res.json({error: "Invalid Date"});
   }
