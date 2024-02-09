@@ -29,7 +29,7 @@ app.get("api/:date?", function(req,res){
   // si no hay fecha devuelve la actual
   if (!date) {
     const currentDate = new Date();
-    return res.json({ unix: currentDate.getTime(), utc: currentDate.toUTCString});
+    return res.json({ unix: currentDate.getTime(), utc: currentDate.toUTCString()});
   }
 
   const parsedDate = new Date(date);
